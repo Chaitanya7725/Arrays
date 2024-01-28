@@ -34,5 +34,4 @@ public class ConcatenatedStringWithUnique {
                 repeat(i+1, temp | uniqueCharStrings.get(i),result,uniqueCharStrings);
         }
     }
-
 }
