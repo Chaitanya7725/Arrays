@@ -17,9 +17,8 @@ public class MaxConsecutiveOnes485 {
                 current++;
                 if(current > max)
                     max = current;
-            }else{
+            }else
                 current=0;
-            }
         }
         return max;
     }
