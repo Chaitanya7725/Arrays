@@ -8,6 +8,7 @@ public class ThreeSum15 {
 
     public static void main(String[] args) {
         System.out.println(threeSum(new int[]{1,-1,-1,0}));
+        System.out.println(threeSum(new int[]{-2,-2,0,0,2,2}));
     }
 //    [1,-1,-1,0]
     public static List<List<Integer>> threeSum(int[] nums) {
@@ -17,18 +18,16 @@ public class ThreeSum15 {
             if(i==0 || i> 0 && nums[i] !=nums[i-1] ){
                 int a = i+1;
                 int b = nums.length-1;
-                int sum = 0 - nums[i];
                 while(a < b){
-                    if(nums[a] + nums[b] == sum ){
+                    int threeSum = nums[i] + nums[a] + nums[b];
+                    if(threeSum > 0)
+                        b --;
+                    else if(threeSum < 0)
+                        a++;
+                    else{
                         result.add(Arrays.asList(nums[i],nums[a],nums[b]));
-                        while(a < b && nums[a]==nums[a+1]) a++;
-                        while(a < b && nums[b]==nums[b-1]) b--;
                         a++;
-                        b--;
-                    }   else if(nums[a]+ nums[b] > sum){
-                        b--;
-                    } else{
-                        a++;
+                        while(a < b && nums[a]==nums[a-1]) a++;
                     }
                 }
             }
