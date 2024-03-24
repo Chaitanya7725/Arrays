@@ -10,23 +10,17 @@ public class ProductOfAnArrayExceptItself238 {
     }
 
     public static int[] productExceptSelf(int[] nums) {
-        int in[]=new int[nums.length];
-        int out[]=new int[nums.length];
-        int result [] =new int[nums.length];
-        in[0]=1;
-        out[nums.length-1]=nums[nums.length-1];
-        for(int i=1;i< nums.length;i++)
-            in[i]=in[i-1]*nums[i];
-        for(int i=nums.length-2;i>=0;i--)
-            out[i]=out[i+1]*nums[i];
-
-        for (int i = 0; i < in.length; i++)
-            if (i == 0)
-                result[i]=1 * out[i+1];
-            else if(i == in.length-1)
-                result[i]=in[i-1] * 1;
-            else
-                result[i]=in[i-1] * out[i+1];
+        int prefix = 1;
+        int postfix =1;
+        int result [] = new int[nums.length];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = prefix;
+            prefix *= nums[i];
+        }
+        for (int i = result.length-1; i >= 0; i--) {
+            result[i] *= postfix;
+            postfix *= nums[i];
+        }
         return result;
     }
 
